@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Page</title>
+    <style>
+        h2 {
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .head {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            padding-top:20%;
+        }
+        .button {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('/static/images/mush2.jpg')" ;>
+
+    <div class="head">
+        {% if result==0 %}
+        <h2>It is most likely that the mushroom is Edible</h2>
+        {% else %}
+        <h2>It is most likely that the mushroom is Poisonous</h2>
+        {% endif %}
+    </div>
+    <div class="button">
+        <form>
+            <input type="button" value="back" onclick="history.back()">
+        </form>
+    </div>
+
+
+</body>
+
+</html>

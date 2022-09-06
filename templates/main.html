@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mushroom classfication</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            padding-top: 70px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        .text {
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        
+        tr {
+            padding-bottom: 50px;
+        }
+        td {
+            text-align: left;
+            padding-bottom: 10px;
+            padding-right: 10px;
+        }
+        
+    
+    </style>
+</head>
+
+
+<body style="background-image: url('/static/images/mush.jpg')" ;>
+    <!--style="background-image: url('/static/images/mush.jpg')";-->
+    <h1>Mushroom Classification Using Machine Learning</h1>
+    <p>Here I have used decision tree algorithm for prediciting the class of the mushroom</p>
+    <br>
+    <h2>Select Mushroom properties : </h2>
+    <form class="text" action="/sub" method="POST">
+        <!---->
+        <!--<legend>Enter Mushroom Properties : </legend>-->
+        <table>
+            <tr>
+                <!--option for cap shape-->
+                <td>
+                    <label for="cap-shape">Cap shape : </label>
+                    <select id="cap-shape" name="cap-shape">
+                        {% for k,v in cap_shapel.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <!--option for cap surface-->
+                <td>
+                    <label for="cap-surface">Cap Surface : </label>
+                    <select id="cap-surface" name="cap-surface">
+                        {% for k,v in cap_surfacel.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <!--option for cap-color-->
+                <td>
+                    <label for="cap-color">Cap color : </label>
+                    <select id="cap-color" name="cap-color">
+                        {% for k,v in cap_colorl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                </td>
+                <td>
+                    <!--option for bruises -->
+                    <label for="bruises">Bruises : </label>
+                    <select id="bruises" name="bruises">
+                        {% for k,v in bruisesl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--odor-->
+                    <label for="odor">Odor : </label>
+                    <select id="odor" name="odor">
+                        {% for k,v in odorl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td>
+                    <!--gill_attachment-->
+                    <label for="gill-attachment">Gill attachment : </label>
+                    <select id="gill-attachment" name="gill-attachment">
+                        {% for k,v in gill_attachmentl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--gill_spacing-->
+                    <label for="gill-spacing">Gill spacing : </label>
+                    <select id="gill-spacing" name="gill-spacing">
+                        {% for k,v in gill_spacingl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--gill_size-->
+                    <label for="gill-size">Gill size :</label>
+                    <select id="gill-size" name="gill-size">
+                        {% for k,v in gill_sizel.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--gill_color-->
+                    <label for="gill-color">Gill color : </label>
+                    <select id="gill-color" name="gill-color">
+                        {% for k,v in gill_colorl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td>
+                    <!--stalk_shape-->
+                    <label for="stalk-shape">Stalk shape : </label>
+                    <select id="stalk-shape" name="stalk-shape">
+                        {% for k,v in stalk_shapel.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--stalk_root-->
+                    <label for="stalk-root">Stalk root : </label>
+                    <select id="stalk-root" name="stalk-root">
+                        {% for k,v in stalk_rootl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--stalk_surface_above_ring-->
+                    <label for="stalk-surface-above-ring">Stalk surface above ring : </label>
+                    <select id="stalk-surface-above-ring" name="stalk-surface-above-ring">
+                        {% for k,v in stalk_surface_above_ringl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+
+                    <!--stalk_surface_below_ring-->
+                    <label for="stalk-surface-below-ring">Stalk surface below ring : </label>
+                    <select id="stalk-surface-below-ring" name="stalk-surface-below-ring">
+                        {% for k,v in stalk_surface_below_ringl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--stalk_color_above_ring-->
+                    <label for="stalk-color-above-ring">Stalk color above ring : </label>
+                    <select id="stalk-color-above-ring" name="stalk-color-above-ring">
+                        {% for k,v in stalk_color_above_ringl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--stalk_color_below_ring-->
+                    <label for="stalk-color-below-ring">Stalk color below ring : </label>
+                    <select id="stalk-color-below-ring" name="stalk-color-below-ring">
+                        {% for k,v in stalk_color_below_ringl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--veil_color-->
+                    <label for="veil-color">Veil color : </label>
+                    <select id="veil-color" name="veil-color">
+                        {% for k,v in veil_colorl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--ring_number-->
+                    <label for="ring-number">Ringnumber : </label>
+                    <select id="ring-number" name="ring-number">
+                        {% for k,v in ring_numberl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--ring_type-->
+                    <label for="ring-type">Ring type : </label>
+                    <select id="ring-type" name="ring-type">
+                        {% for k,v in ring_typel.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--spore_print_color-->
+                    <label for="spore-print-color">Spore print color : </label>
+                    <select id="spore-print-color" name="spore-print-color">
+                        {% for k,v in spore_print_colorl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--population-->
+                    <label for="population">Population : </label>
+                    <select id="population" name="population">
+                        {% for k,v in populationl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <!--habitat-->
+                    <label for="habitat">Habitat : </label>
+                    <select id="habitat" name="habitat">
+                        {% for k,v in habitatl.items() %}
+                        <option value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
