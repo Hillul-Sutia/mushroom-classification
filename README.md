@@ -4,3 +4,4 @@ This is deployment model of mushroom classification model which predicts whether
 # Deployment
   The deployment is done with the help of flask framework
 # Link for the deployed model
+  https://deploy-mushroom.herokuapp.com/
