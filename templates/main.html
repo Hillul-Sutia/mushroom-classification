@@ -8,20 +8,17 @@
             text-align: center;
         }
 
-        h2 {
-            padding-top: 70px;
-            text-align: center;
-        }
-
         p {
             text-align: center;
         }
 
-        form {
+        h2 {
+            padding-top: 3%;
             text-align: center;
         }
-
+        
         .text {
+            text-align: center;
             background-color: rgb(0, 0, 0);
             /* Fallback color */
             background-color: rgba(0, 0, 0, 0.4);
@@ -29,15 +26,10 @@
             color: white;
             font-weight: bold;
             border: 3px solid #f1f1f1;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            width: 80%;
             padding: 20px;
-            text-align: center;
             backdrop-filter: blur(5px);
+            margin: auto;
+            width: 68%;
         }
 
         
@@ -49,19 +41,21 @@
             padding-bottom: 10px;
             padding-right: 10px;
         }
-        
-    
+        body {
+            background-image: url('/static/images/mush.jpg');
+        }
     </style>
 </head>
 
 
-<body style="background-image: url('/static/images/mush.jpg')" ;>
+<body>
     <!--style="background-image: url('/static/images/mush.jpg')";-->
     <h1>Mushroom Classification Using Machine Learning</h1>
     <p>Here I have used decision tree algorithm for prediciting the class of the mushroom</p>
     <br>
     <h2>Select Mushroom properties : </h2>
-    <form class="text" action="/sub" method="POST">
+    <!--<div style="overflow-x:auto;"></div>-->
+    <form class="text" action="/sub" method="POST" style="overflow-x: auto;">
         <!---->
         <!--<legend>Enter Mushroom Properties : </legend>-->
         <table>
